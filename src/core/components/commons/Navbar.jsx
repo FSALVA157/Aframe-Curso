@@ -16,17 +16,17 @@ const items = [
     disabled: true,
   },
   {
-    label: 'Navigation Three - Submenu',
+    label: 'Aframe Topics',
     key: 'SubMenu',
     icon: <SettingOutlined />,
     children: [
       {
         type: 'group',
-        label: 'Item 1',
+        label: 'Muestras',
         children: [
           {
-            label: 'Option 1',
-            key: 'setting:1',
+            label: <NavLink to="/animate-basic" target="_blank" >Ver Animacion Basica</NavLink>,
+            key: 'animated-1',
           },
           {
             label: 'Option 2',

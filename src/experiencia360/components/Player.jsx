@@ -26,9 +26,10 @@ export const PlayerComponent = () => {
       <a-assets>
         <img id="sky" src={skyImage} />
         <a-asset-item id="village" src="/assets/scene.gltf"></a-asset-item>
+        <a-asset-item id="barril" src="/3dmodels/barril/wooden_stool_02_4k.gltf"></a-asset-item>
       </a-assets>
 
-      <a-entity camera position="0 1.6 0" rotation="90 0 0" wasd-controls look-controls></a-entity>
+      <a-entity camera position="0 1.6 31" rotation="90 0 0" wasd-controls look-controls></a-entity>
 
       {
         assetsLoaded && (
@@ -40,7 +41,13 @@ export const PlayerComponent = () => {
               rotation="0 0 0"
               scale="50 50 50"
               ></a-entity>
+              <a-entity
+              gltf-model="#barril"
+              position="-3 0 31"
+              scale="5 5 5"
+              ></a-entity>
           </>
+
         )
         //   assetsLoaded && (
         //     <a-plane material="

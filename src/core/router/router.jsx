@@ -4,6 +4,7 @@ import { ProtectedLayout } from "../components/layouts/ProtectedLayout";
 import { DesignerComponent } from "../../experiencia360/components/Designer";
 import { AnaliticasComponent } from "../../analiticas/components/Analiticas";
 import { PlayerComponent } from "../../experiencia360/components/Player";
+import { PlayerAnimateBasicComponent } from "../../experiencia360/components/PlayerAnimateBasic";
 
 
 export const routes = createBrowserRouter([
@@ -30,6 +31,10 @@ export const routes = createBrowserRouter([
     {
         path: "player",
         element: <PlayerComponent/>
+    },
+    {
+        path: "animate-basic",
+        element: <PlayerAnimateBasicComponent/>
     }
     
 ])
