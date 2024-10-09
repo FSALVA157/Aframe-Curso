@@ -29,8 +29,8 @@ const items = [
             key: 'animated-1',
           },
           {
-            label: 'Option 2',
-            key: 'setting:2',
+            label: <NavLink to="/player-lights-shadows" target="_blank" >Ver Luces y Sombras</NavLink>,
+            key: 'lights-shadows-1',
           },
         ],
       },
