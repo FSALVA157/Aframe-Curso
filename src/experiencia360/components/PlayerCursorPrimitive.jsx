@@ -84,13 +84,17 @@ export const PlayerCursorPrimitive = () => {
 
         <a-entity camera look-controls>
           <a-entity
-            cursor="rayOrigin: controller; fuse: true; fuseTimeout: 500"
+            cursor="fuse: true; fuseTimeout: 500"
+            rayOrigin="controller"
             raycaster="objects: .interactable"
             position="0 0 -1"
             geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
             material="color: black; shader: flat"
           ></a-entity>
         </a-entity>
+
+        <a-entity oculus-touch-controls="hand: left"></a-entity>
+        <a-entity oculus-touch-controls="hand: right"></a-entity>
 
         <a-entity
           id="box"
