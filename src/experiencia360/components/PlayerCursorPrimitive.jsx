@@ -22,19 +22,23 @@ export const PlayerCursorPrimitive = () => {
   }, []);
 
   useEffect(() => {
-    if (!AFRAME.components['cursor-listener']) { 
-    AFRAME.registerComponent('cursor-listener', {
-      init: function () {
+    if (!AFRAME.components["cursor-listener"]) {
+      AFRAME.registerComponent("cursor-listener", {
+        init: function () {
           var lastIndex = -1;
-          var COLORS = ['red', 'green', 'blue'];
-          this.el.addEventListener('click', function (evt) {
-              lastIndex = (lastIndex + 1) % COLORS.length;
-              this.setAttribute('material', 'color', COLORS[lastIndex]);
-              console.log('I was clicked at: ', evt.detail.intersection.point);
+          var COLORS = ["red", "green", "blue"];
+          this.el.addEventListener("click", function (evt) {
+            lastIndex = (lastIndex + 1) % COLORS.length;
+            this.setAttribute("material", "color", COLORS[lastIndex]);
+            console.log("I was clicked at: ", evt.detail.intersection.point);
           });
-      }
-  }
-);
+          this.el.addEventListener("click", function (evt) {
+            lastIndex = (lastIndex + 1) % COLORS.length;
+            this.setAttribute("material", "color", COLORS[lastIndex]);
+            console.log("I was clicked at: ", evt.detail.intersection.point);
+          });
+        },
+      });
     }
   }, []);
 
@@ -64,8 +68,6 @@ export const PlayerCursorPrimitive = () => {
 
   return (
     <>
-      
-
       <a-scene>
         <a-assets>
           {/* <img id="floor" src={floor} />
@@ -81,19 +83,25 @@ export const PlayerCursorPrimitive = () => {
         </a-assets>
 
         <a-entity camera look-controls>
-			<a-entity cursor="rayOrigin: controller; fuse: true; fuseTimeout: 500"
-					  position="0 0 -1"
-					  geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
-					  material="color: black; shader: flat">
-			</a-entity>
-		  </a-entity>
-      
+          <a-entity
+            cursor="rayOrigin: controller; fuse: true; fuseTimeout: 500"
+            position="0 0 -1"
+            geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+            material="color: black; shader: flat"
+          ></a-entity>
+        </a-entity>
 
-        
-      <a-entity id="box" cursor-listener geometry="primitive: box" material="color: blue" position="-4 0 -7"></a-entity>
-        <a-box cursor-listener  position="-2 0 -7"></a-box>
-        <a-box cursor-listener  position="0 0 -7"></a-box>
-        <a-box cursor-listener  position="2 0 -7"></a-box>
+        <a-entity
+          id="box"
+          class="interactable"
+          cursor-listener
+          geometry="primitive: box"
+          material="color: blue"
+          position="-4 0 -7"
+        ></a-entity>
+        <a-box class="interactable" cursor-listener position="-2 0 -7"></a-box>
+        <a-box class="interactable" cursor-listener position="0 0 -7"></a-box>
+        <a-box class="interactable" cursor-listener position="2 0 -7"></a-box>
 
         {/* <a-sky color="#212121"></a-sky> */}
 
