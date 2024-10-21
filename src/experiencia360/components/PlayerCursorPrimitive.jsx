@@ -85,6 +85,7 @@ export const PlayerCursorPrimitive = () => {
         <a-entity camera look-controls>
           <a-entity
             cursor="rayOrigin: controller; fuse: true; fuseTimeout: 500"
+            raycaster="objects: .interactable"
             position="0 0 -1"
             geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
             material="color: black; shader: flat"
