@@ -93,8 +93,11 @@ export const PlayerCursorPrimitive = () => {
           ></a-entity>
         </a-entity>
 
-        <a-entity oculus-touch-controls="hand: left"></a-entity>
-        <a-entity oculus-touch-controls="hand: right"></a-entity>
+        <a-entity hand-tracking-controls="hand: left"></a-entity>
+        <a-entity vive-controls="hand: left"></a-entity>
+
+        <a-entity hand-tracking-controls="hand: right"></a-entity>
+        <a-entity vive-controls="hand: right"></a-entity>
 
         <a-entity
           id="box"
