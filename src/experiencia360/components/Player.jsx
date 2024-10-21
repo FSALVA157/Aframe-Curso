@@ -22,7 +22,7 @@ export const PlayerComponent = () => {
   }, []);
 
   return (
-    <a-scene>
+    <a-scene vr-mode-ui="enabled: true">
       <a-assets>
         <img id="sky" src={skyImage} />
         <a-asset-item id="village" src="/assets/scene.gltf"></a-asset-item>

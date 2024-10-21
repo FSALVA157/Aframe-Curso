@@ -6,6 +6,8 @@ import { AnaliticasComponent } from "../../analiticas/components/Analiticas";
 import { PlayerComponent } from "../../experiencia360/components/Player";
 import { PlayerAnimateBasicComponent } from "../../experiencia360/components/PlayerAnimateBasic";
 import { PlayerLightsShadows } from "../../experiencia360/components/PlayerLightsShadows";
+import { PlayerAframeInspector } from "../../experiencia360/components/PlayerAframeInspector";
+import { PlayerCursorPrimitive } from "../../experiencia360/components/PlayerCursorPrimitive";
 
 
 export const routes = createBrowserRouter([
@@ -48,6 +50,14 @@ export const routes = createBrowserRouter([
     {
         path: "player-lights-shadows",
         element: <PlayerLightsShadows/>
+    },
+    {
+        path: "player-aframe-inspector",
+        element: <PlayerAframeInspector/>
+    },
+    {
+        path: "player-cursor",
+        element: <PlayerCursorPrimitive/>
     }
     
 ])

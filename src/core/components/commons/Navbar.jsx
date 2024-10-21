@@ -32,6 +32,14 @@ const items = [
             label: <NavLink to="/player-lights-shadows" target="_blank" >Ver Luces y Sombras</NavLink>,
             key: 'lights-shadows-1',
           },
+          {
+            label: <NavLink to="/player-aframe-inspector" target="_blank" >Ver Aframe Inspector</NavLink>,
+            key: 'aframe-inspector-1',
+          },
+          {
+            label: <NavLink to="/player-cursor" target="_blank" >Ver Cursor Basico</NavLink>,
+            key: 'cursor-1',
+          }
         ],
       },
       {

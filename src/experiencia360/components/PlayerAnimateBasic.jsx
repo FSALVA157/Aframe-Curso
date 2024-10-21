@@ -15,6 +15,15 @@ export const PlayerAnimateBasicComponent = () => {
     if (assetsElement) {
       assetsElement.addEventListener("loaded", handleAssetsLoaded);
     }
+
+    setTimeout(() => {
+      const scene = document.querySelector("a-scene");
+      if (scene && scene.components["vr-mode-ui"]) {
+        scene.setAttribute("vr-mode-ui", "enabled: true");
+      }
+    }, 500); 
+
+
     return () => {
       if (assetsElement) {
         assetsElement.removeEventListener("loaded", handleAssetsLoaded);
@@ -23,7 +32,7 @@ export const PlayerAnimateBasicComponent = () => {
   }, []);
 
   return (
-    <a-scene>
+    <a-scene vr-mode-ui="enabled: true">
       <a-assets>
         <img id="sky" src={skyImage} />
         <img id="floor" src={floorTexture}></img>        
