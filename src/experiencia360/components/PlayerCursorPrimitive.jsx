@@ -42,6 +42,34 @@ export const PlayerCursorPrimitive = () => {
     }
   }, []);
 
+  useEffect(() => {
+    // Añadir interacciones con los controladores de manos
+    const addHandInteraction = (controllerEl) => {
+      controllerEl.addEventListener("triggerdown", (evt) => {
+        const intersectedEl = evt.detail.intersectedEl; // El elemento intersectado
+        if (intersectedEl && intersectedEl.classList.contains("interactable")) {
+          // Cambiar el color del cubo interactuado
+          const COLORS = ["red", "green", "blue"];
+          const currentColor = intersectedEl.getAttribute("material").color;
+          const nextColor =
+            COLORS[(COLORS.indexOf(currentColor) + 1) % COLORS.length];
+          intersectedEl.setAttribute("material", "color", nextColor);
+        }
+      });
+    };
+
+    // Manos/controladores con raycaster
+    const leftHand = document.querySelector("[hand-tracking-controls][hand='left']");
+    const rightHand = document.querySelector("[hand-tracking-controls][hand='right']");
+
+    if (leftHand) {
+      addHandInteraction(leftHand);
+    }
+    if (rightHand) {
+      addHandInteraction(rightHand);
+    }
+  }, []);
+
   // useEffect(() => {
   //   const scene = document.querySelector("a-scene");
   //   const camera = document.querySelector("a-camera");
