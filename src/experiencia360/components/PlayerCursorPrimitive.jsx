@@ -121,11 +121,20 @@ export const PlayerCursorPrimitive = () => {
           ></a-entity>
         </a-entity>
 
-        <a-entity hand-tracking-controls="hand: left"></a-entity>
+        {/* <a-entity hand-tracking-controls="hand: left"></a-entity>
         <a-entity vive-controls="hand: left"></a-entity>
 
         <a-entity hand-tracking-controls="hand: right"></a-entity>
-        <a-entity vive-controls="hand: right"></a-entity>
+        <a-entity vive-controls="hand: right"></a-entity> */}
+         {/* Manos con raycaster */}
+         <a-entity
+          hand-tracking-controls="hand: left"
+          raycaster="objects: .interactable; showLine: true"
+        ></a-entity>
+        <a-entity
+          hand-tracking-controls="hand: right"
+          raycaster="objects: .interactable; showLine: true"
+        ></a-entity>
 
         <a-entity
           id="box"
@@ -135,7 +144,7 @@ export const PlayerCursorPrimitive = () => {
           material="color: blue"
           position="-4 0 -7"
         ></a-entity>
-        <a-box class="interactable" cursor-listener position="-2 0 -7"></a-box>
+        <a-box class="interactable" cursor-listener position="-2 0 -7" geometry="primitive: box" material="color: yellow"></a-box>
         <a-box class="interactable" cursor-listener position="0 0 -7"></a-box>
         <a-box class="interactable" cursor-listener position="2 0 -7"></a-box>
 
