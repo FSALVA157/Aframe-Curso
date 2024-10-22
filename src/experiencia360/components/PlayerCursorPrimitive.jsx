@@ -139,7 +139,7 @@ export const PlayerCursorPrimitive = () => {
           <a-entity
             cursor="fuse: true; fuseTimeout: 500"
             rayOrigin="controller"
-            raycaster="objects: .interactable"
+            raycaster="objects: .interactable; showLine: true; debug: true"
             position="0 0 -1"
             geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
             material="color: black; shader: flat"
