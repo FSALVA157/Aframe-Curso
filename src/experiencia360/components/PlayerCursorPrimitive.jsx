@@ -42,26 +42,50 @@ export const PlayerCursorPrimitive = () => {
     }
   }, []);
 
+  // useEffect(() => {
+  //   // Añadir interacciones con los controladores de manos
+  //   const addHandInteraction = (controllerEl) => {
+  //     controllerEl.addEventListener("triggerdown", (evt) => {
+  //       const intersectedEl = evt.detail.intersectedEl; // El elemento intersectado
+  //       if (intersectedEl && intersectedEl.classList.contains("interactable")) {
+  //         // Cambiar el color del cubo interactuado
+  //         const COLORS = ["red", "green", "blue"];
+  //         const currentColor = intersectedEl.getAttribute("material").color;
+  //         const nextColor =
+  //           COLORS[(COLORS.indexOf(currentColor) + 1) % COLORS.length];
+  //         intersectedEl.setAttribute("material", "color", nextColor);
+  //       }
+  //     });
+  //   };
+
+  //   // Manos/controladores con raycaster
+  //   const leftHand = document.querySelector("[hand-tracking-controls][hand='left']");
+  //   const rightHand = document.querySelector("[hand-tracking-controls][hand='right']");
+
+  //   if (leftHand) {
+  //     addHandInteraction(leftHand);
+  //   }
+  //   if (rightHand) {
+  //     addHandInteraction(rightHand);
+  //   }
+  // }, []);
   useEffect(() => {
-    // Añadir interacciones con los controladores de manos
     const addHandInteraction = (controllerEl) => {
       controllerEl.addEventListener("triggerdown", (evt) => {
-        const intersectedEl = evt.detail.intersectedEl; // El elemento intersectado
-        if (intersectedEl && intersectedEl.classList.contains("interactable")) {
+        const intersection = evt.detail.intersection; // El objeto intersectado
+        if (intersection && intersection.object.el.classList.contains("interactable")) {
           // Cambiar el color del cubo interactuado
           const COLORS = ["red", "green", "blue"];
-          const currentColor = intersectedEl.getAttribute("material").color;
-          const nextColor =
-            COLORS[(COLORS.indexOf(currentColor) + 1) % COLORS.length];
-          intersectedEl.setAttribute("material", "color", nextColor);
+          const currentColor = intersection.object.el.getAttribute("material").color;
+          const nextColor = COLORS[(COLORS.indexOf(currentColor) + 1) % COLORS.length];
+          intersection.object.el.setAttribute("material", "color", nextColor);
         }
       });
     };
-
-    // Manos/controladores con raycaster
+  
     const leftHand = document.querySelector("[hand-tracking-controls][hand='left']");
     const rightHand = document.querySelector("[hand-tracking-controls][hand='right']");
-
+  
     if (leftHand) {
       addHandInteraction(leftHand);
     }
@@ -69,6 +93,7 @@ export const PlayerCursorPrimitive = () => {
       addHandInteraction(rightHand);
     }
   }, []);
+  
 
   // useEffect(() => {
   //   const scene = document.querySelector("a-scene");
@@ -121,10 +146,10 @@ export const PlayerCursorPrimitive = () => {
           ></a-entity>
         </a-entity>
 
-        <a-entity hand-tracking-controls="hand: left" raycaster="objects: .interactable; showLine: true"></a-entity>
-        <a-entity vive-controls="hand: left" raycaster="objects: .interactable; showLine: true"></a-entity>
-        <a-entity hand-tracking-controls="hand: right" raycaster="objects: .interactable; showLine: true"></a-entity>
-        <a-entity vive-controls="hand: right" raycaster="objects: .interactable; showLine: true"></a-entity>
+        <a-entity hand-tracking-controls="hand: left" raycaster="objects: .interactable; showLine: true" laser-controls="hand: left"></a-entity>
+        <a-entity vive-controls="hand: left" raycaster="objects: .interactable; showLine: true" laser-controls="hand: left"></a-entity>
+        <a-entity hand-tracking-controls="hand: right" raycaster="objects: .interactable; showLine: true" laser-controls="hand: right"></a-entity>
+        <a-entity vive-controls="hand: right" raycaster="objects: .interactable; showLine: true" laser-controls="hand: right"></a-entity>
          {/* Manos con raycaster */}
          {/* <a-entity
           hand-tracking-controls="hand: left"
@@ -144,7 +169,7 @@ export const PlayerCursorPrimitive = () => {
           position="-4 0 -7"
         ></a-entity>
         <a-box class="interactable" cursor-listener position="-2 0 -7" geometry="primitive: box" material="color: purple"></a-box>
-        <a-box class="interactable" cursor-listener position="0 0 -7"></a-box>
+        <a-box class="interactable" cursor-listener position="0 0 -7" geometry="primitive: box" material="color: yellow"></a-box>
         <a-box class="interactable" cursor-listener position="2 0 -7"></a-box>
 
         {/* <a-sky color="#212121"></a-sky> */}
