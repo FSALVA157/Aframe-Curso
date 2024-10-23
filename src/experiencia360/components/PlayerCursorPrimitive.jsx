@@ -32,11 +32,11 @@ export const PlayerCursorPrimitive = () => {
             this.setAttribute("material", "color", COLORS[lastIndex]);
             console.log("I was clicked at: ", evt.detail.intersection.point);
           });
-          this.el.addEventListener("click", function (evt) {
-            lastIndex = (lastIndex + 1) % COLORS.length;
-            this.setAttribute("material", "color", COLORS[lastIndex]);
-            console.log("I was clicked at: ", evt.detail.intersection.point);
-          });
+          // this.el.addEventListener("click", function (evt) {
+          //   lastIndex = (lastIndex + 1) % COLORS.length;
+          //   this.setAttribute("material", "color", COLORS[lastIndex]);
+          //   console.log("I was clicked at: ", evt.detail.intersection.point);
+          // });
         },
       });
     }
@@ -73,7 +73,7 @@ export const PlayerCursorPrimitive = () => {
     const addHandInteraction = (controllerEl) => {
       controllerEl.addEventListener("triggerdown", (evt) => {
         const intersection = evt.detail.intersection; // El objeto intersectado
-        if (intersection && intersection.object.el.classList.contains("interactable")) {
+        if (intersection && intersection.object.el.classList.contains("interactable")&& intersection.object.el.classList.contains("interactable")) {
           // Cambiar el color del cubo interactuado
           const COLORS = ["red", "green", "blue"];
           const currentColor = intersection.object.el.getAttribute("material").color;
@@ -172,7 +172,7 @@ export const PlayerCursorPrimitive = () => {
         ></a-entity>
         <a-box class="interactable" cursor-listener position="-2 0 -7" geometry="primitive: box" material="color: purple"></a-box>
         <a-box class="interactable" cursor-listener position="0 0 -7" geometry="primitive: box" material="color: yellow"></a-box>
-        <a-box class="interactable" cursor-listener position="2 0 -7" geometry="primitive: box" material="color: orange"></a-box>
+        <a-box class="interactable" cursor-listener position="2 0 -7" geometry="primitive: box" material="color: green"></a-box>
 
         {/* <a-sky color="#212121"></a-sky> */}
 
