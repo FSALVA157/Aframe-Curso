@@ -73,19 +73,29 @@ export const PlayerCursorPrimitive = () => {
     const addHandInteraction = (controllerEl) => {
       controllerEl.addEventListener("triggerdown", (evt) => {
         const intersection = evt.detail.intersection; // El objeto intersectado
-        if (intersection && intersection.object.el.classList.contains("interactable")&& intersection.object.el.classList.contains("interactable")) {
+        if (
+          intersection &&
+          intersection.object.el.classList.contains("interactable") &&
+          intersection.object.el.classList.contains("interactable")
+        ) {
           // Cambiar el color del cubo interactuado
           const COLORS = ["red", "green", "blue"];
-          const currentColor = intersection.object.el.getAttribute("material").color;
-          const nextColor = COLORS[(COLORS.indexOf(currentColor) + 1) % COLORS.length];
+          const currentColor =
+            intersection.object.el.getAttribute("material").color;
+          const nextColor =
+            COLORS[(COLORS.indexOf(currentColor) + 1) % COLORS.length];
           intersection.object.el.setAttribute("material", "color", nextColor);
         }
       });
     };
-  
-    const leftHand = document.querySelector("[hand-tracking-controls][hand='left']");
-    const rightHand = document.querySelector("[hand-tracking-controls][hand='right']");
-  
+
+    const leftHand = document.querySelector(
+      "[hand-tracking-controls][hand='left']"
+    );
+    const rightHand = document.querySelector(
+      "[hand-tracking-controls][hand='right']"
+    );
+
     if (leftHand) {
       addHandInteraction(leftHand);
     }
@@ -93,7 +103,6 @@ export const PlayerCursorPrimitive = () => {
       addHandInteraction(rightHand);
     }
   }, []);
-  
 
   // useEffect(() => {
   //   const scene = document.querySelector("a-scene");
@@ -146,14 +155,41 @@ export const PlayerCursorPrimitive = () => {
           ></a-entity>
         </a-entity>
 
-        <a-entity  raycaster="objects: .interactable; showLine: true" laser-controls="hand: left"></a-entity>
-        <a-entity raycaster="objects: .interactable; showLine: true" laser-controls="hand: left"></a-entity>
-        <a-entity raycaster="objects: .interactable; showLine: true" laser-controls="hand: right"></a-entity>
-        <a-entity raycaster="objects: .interactable; showLine: true" laser-controls="hand: right"></a-entity>
+        <a-entity
+          raycaster="objects: .interactable; showLine: true"
+          laser-controls="hand: left"
+        ></a-entity>
+        <a-entity
+          raycaster="objects: .interactable; showLine: true"
+          laser-controls="hand: left"
+        ></a-entity>
+        <a-entity
+          raycaster="objects: .interactable; showLine: true"
+          laser-controls="hand: right"
+        ></a-entity>
+        <a-entity
+          raycaster="objects: .interactable; showLine: true"
+          laser-controls="hand: right"
+        ></a-entity>
+        <a-box
+          position="-1 0.5 -3"
+          rotation="0 45 0"
+          color="#4CC3D9"
+          event-set__enter="_event: mouseenter; color: #8FF7FF"
+          event-set__leave="_event: mouseleave; color: #4CC3D9"
+        ></a-box>
+        <a-box
+          position="-1 0.5 -3"
+          rotation="0 45 0"
+          color="#4CC3D9"
+          class="interactable"
+          event-set__enter="_event: raycaster-intersected; color: #8FF7FF"
+          event-set__leave="_event: raycaster-intersected-cleared; color: #4CC3D9"
+        ></a-box>
 
         {/* <a-entity vive-controls="hand: right" raycaster="objects: .interactable; showLine: true" laser-controls="hand: right"></a-entity> */}
-         {/* Manos con raycaster */}
-         {/* <a-entity
+        {/* Manos con raycaster */}
+        {/* <a-entity
           hand-tracking-controls="hand: left"
           raycaster="objects: .interactable; showLine: true"
         ></a-entity>
@@ -170,9 +206,27 @@ export const PlayerCursorPrimitive = () => {
           material="color: blue"
           position="-4 0 -7"
         ></a-entity>
-        <a-box class="interactable" cursor-listener position="-2 0 -7" geometry="primitive: box" material="color: purple"></a-box>
-        <a-box class="interactable" cursor-listener position="0 0 -7" geometry="primitive: box" material="color: yellow"></a-box>
-        <a-box class="interactable" cursor-listener position="2 0 -7" geometry="primitive: box" material="color: green"></a-box>
+        <a-box
+          class="interactable"
+          cursor-listener
+          position="-2 0 -7"
+          geometry="primitive: box"
+          material="color: purple"
+        ></a-box>
+        <a-box
+          class="interactable"
+          cursor-listener
+          position="0 0 -7"
+          geometry="primitive: box"
+          material="color: yellow"
+        ></a-box>
+        <a-box
+          class="interactable"
+          cursor-listener
+          position="2 0 -7"
+          geometry="primitive: box"
+          material="color: green"
+        ></a-box>
 
         {/* <a-sky color="#212121"></a-sky> */}
 
