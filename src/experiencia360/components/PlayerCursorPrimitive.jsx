@@ -171,21 +171,7 @@ export const PlayerCursorPrimitive = () => {
           raycaster="objects: .interactable; showLine: true"
           laser-controls="hand: right"
         ></a-entity>
-        <a-box
-          position="-1 0.5 -3"
-          rotation="0 45 0"
-          color="#4CC3D9"
-          event-set__enter="_event: mouseenter; color: #8FF7FF"
-          event-set__leave="_event: mouseleave; color: #4CC3D9"
-        ></a-box>
-        <a-box
-          position="-1 0.5 -3"
-          rotation="0 45 0"
-          color="#4CC3D9"
-          class="interactable"
-          event-set__enter="_event: raycaster-intersected; color: #8FF7FF"
-          event-set__leave="_event: raycaster-intersected-cleared; color: #4CC3D9"
-        ></a-box>
+        
 
         {/* <a-entity vive-controls="hand: right" raycaster="objects: .interactable; showLine: true" laser-controls="hand: right"></a-entity> */}
         {/* Manos con raycaster */}
@@ -226,6 +212,21 @@ export const PlayerCursorPrimitive = () => {
           position="2 0 -7"
           geometry="primitive: box"
           material="color: green"
+        ></a-box>
+        <a-box
+          position="4 0 -7"
+          rotation="0 45 0"
+          color="#4CC3D9"
+          event-set__enter="_event: mouseenter; color: #8FF7FF"
+          event-set__leave="_event: mouseleave; color: #4CC3D9"
+        ></a-box>
+        <a-box
+          position="6 0 -7"
+          rotation="0 45 0"
+          color="#4CC3D9"
+          class="interactable"
+          event-set__enter="_event: raycaster-intersected; color: #8FF7FF"
+          event-set__leave="_event: raycaster-intersected-cleared; color: #4CC3D9"
         ></a-box>
 
         {/* <a-sky color="#212121"></a-sky> */}
